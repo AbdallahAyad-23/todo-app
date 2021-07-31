@@ -1,0 +1,203 @@
+:root {
+  --veryLightGray: hsl(0, 0%, 98%);
+  --veryLightGrayishBlue: hsl(236, 33%, 92%);
+  --lightGrayishBlue: hsl(233, 11%, 84%);
+  --darkGrayishBlue: hsl(236, 9%, 61%);
+  --veryDarkGrayishBlue: hsl(235, 19%, 35%);
+  --veryDarkBlue: hsl(235, 21%, 11%);
+  --veryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --lightGrayishBlue: hsl(234, 39%, 85%);
+  --darkGrayishBlue: hsl(234, 11%, 52%);
+  /* --veryDarkGrayishBlue: hsl(233, 14%, 35%);
+  --veryDarkGrayishBlue: hsl(237, 14%, 26%); */
+  --lightHeroBg: url("./images/bg-desktop-light.jpg");
+  --darkHeroBg: url("./images/bg-desktop-dark.jpg");
+  --sunIcon: url("./images/icon-sun.svg");
+  --moonIcon: url("./images/icon-moon.svg");
+}
+.light-theme {
+  --heroBg: var(--lightHeroBg);
+  --mainBg: var(--veryLightGray);
+  --appColor: var(--veryDarkGrayishBlue);
+  --todosBg: var(--veryLightGray);
+  --todosShadow: var(--lightGrayishBlue);
+  --todoBorderBtm: var(--lightGrayishBlue);
+  --btnColor: var(--darkGrayishBlue);
+  --todoCompleteBorderColor: var(--lightGrayishBlue);
+  --switch: var(--moonIcon);
+}
+.dark-theme {
+  --heroBg: var(--darkHeroBg);
+  --mainBg: var(--veryDarkBlue);
+  --btnColor: var(--lightGrayishBlue);
+  --appColor: var(--lightGrayishBlue);
+  --todosBg: var(--veryDarkDesaturatedBlue);
+  --todosShadow: var(--veryDarkGrayishBlue);
+  --todoBorderBtm: var(--veryDarkGrayishBlue);
+  --btnColor: var(--darkGrayishBlue);
+  --todoCompleteBorderColor: var(--veryDarkGrayishBlue);
+  --switch: var(--sunIcon);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-family: "Josefin Sans";
+  font-size: 18px;
+  background: var(--mainBg);
+  transition: all 0.3s linear;
+}
+
+button {
+  border: none;
+  background: none;
+  color: var(--btnColor);
+  font-family: inherit;
+}
+button:hover,
+button:active {
+  cursor: pointer;
+  color: var(--appColor);
+}
+
+.header-bg {
+  background: var(--heroBg);
+  height: 250px;
+}
+.todo-head {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.todo-head-top {
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.app {
+  width: 40%;
+  min-width: 500px;
+  top: 100px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1rem;
+  color: var(--appColor);
+}
+.todo-theme-switch {
+  background: var(--switch);
+  width: 25px;
+  height: 100%;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+}
+.todos {
+  background: var(--todosBg);
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px var(--todosShadow);
+}
+.todo {
+  border-bottom: 1px solid var(--todoBorderBtm);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todo[draggable] {
+  cursor: move;
+}
+.todo-left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.todo-create {
+  background: var(--todosBg);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--appColor);
+  outline: none;
+  padding: 1rem;
+}
+.todo-complete {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--todoCompleteBorderColor);
+  border-radius: 100%;
+}
+.todo-complete:hover {
+  border-color: var(--appColor);
+}
+.complete {
+  text-decoration: line-through;
+}
+.todo-completed {
+  background-image: url(./images/icon-check.svg),
+    linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+/* .todo-complete .todo-complete .todo-delete {
+  color: hsl(237, 14%, 26%);
+} */
+.todo-delete:hover,
+.todo-delete:active {
+  font-size: 1rem;
+  color: var(--appColor);
+}
+.todos-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.selected {
+  color: hsl(220, 98%, 61%);
+}
+.selected:hover {
+  color: hsl(220, 98%, 61%);
+}
+.dragging {
+  opacity: 0.9;
+}
+@media (max-width: 600px) {
+  .app {
+    min-width: 90%;
+  }
+  .todos-bottom {
+    flex-wrap: wrap;
+  }
+  .todos-filters {
+    bottom: 0;
+    display: flex;
+    gap: 10px;
+    order: 1;
+    justify-content: center;
+    margin-top: 10px;
+    border-top: 1px solid var(--todoBorderBtm);
+    padding-top: 0.5rem;
+    width: 100%;
+  }
+}

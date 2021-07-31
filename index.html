@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <title>Todo app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="light-theme">
+    <header class="header-bg"></header>
+    <main>
+      <div class="app">
+        <div class="todo-head">
+          <div class="todo-head-top">
+            <h1>T O D O</h1>
+            <button class="todo-theme-switch">
+            </button>
+          </div>
+          <input
+            type="text"
+            class="todo-create"
+            placeholder="Create a new todo..."
+          />
+        </div>
+        <div class="todos">
+          <div class="todos-top"></div>
+          <div class="todos-bottom">
+            <p class="todos-number">0 items left</p>
+            <div class="todos-filters">
+              <button class="filter-all selected">All</button>
+              <button class="filter-active">Active</button>
+              <button class="filter-complete">Completed</button>
+            </div>
+            <button class="clear-completed">Clear Completed</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
